@@ -28,6 +28,16 @@
   .card .tags{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
   .tag{font-size:11px;font-weight:600;color:var(--brand2);background:#eef3fc;border-radius:5px;padding:2px 8px}
   .tag.hot{background:#fdeaea;color:var(--accent)}
+  .sec{font-size:15px;font-weight:700;margin:38px 0 4px;display:flex;align-items:center;gap:9px}
+  .sec::before{content:"";width:4px;height:15px;border-radius:2px;background:var(--brand2)}
+  .sechint{font-size:12.5px;color:var(--muted);margin:0 0 16px;padding-left:13px}
+  .dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+  .dl a{display:flex;flex-direction:column;gap:3px;text-decoration:none;color:inherit;
+    background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 16px;
+    box-shadow:0 1px 3px rgba(20,35,70,.04);transition:border-color .15s,transform .15s}
+  .dl a:hover{border-color:#c9d7ef;transform:translateY(-1px)}
+  .dl b{font-size:13.6px;font-weight:700;color:var(--ink)}
+  .dl span{font-size:11.6px;color:var(--muted)}
   footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;
     color:#98a2b3;text-align:center;line-height:1.9}
 </style>
@@ -74,6 +84,35 @@
       <div class="tags"><span class="tag">外部链接</span><span class="tag">新窗口打开</span></div>
     </a>
 
+  </div>
+
+  <h2 class="sec">资料下载</h2>
+  <p class="sechint">决策册、参数原始数据与可打印 PDF</p>
+  <div class="dl">
+    <a href="coffee-machines-decision.html">
+      <b>家用咖啡机决策册 · 五款 E61</b>
+      <span>网页版 · 含 3035C 的五款对比</span>
+    </a>
+    <a href="coffee-machines-e61-5.pdf">
+      <b>家用咖啡机决策册 · 五款 E61</b>
+      <span>PDF · 7.7 MB · 适合打印 / 转发</span>
+    </a>
+    <a href="grinders-2000.pdf">
+      <b>2000 元家用磨豆机 · 参数与家庭使用对比</b>
+      <span>PDF · 1.5 MB</span>
+    </a>
+    <a href="coffee-data.csv">
+      <b>咖啡机详细参数（原始数据）</b>
+      <span>CSV · 每列附来源依据与核对日期</span>
+    </a>
+    <a href="coffee-data.md">
+      <b>咖啡机详细参数</b>
+      <span>Markdown · 可在浏览器直接读</span>
+    </a>
+    <a href="coffee-machines.xlsx">
+      <b>9 台横向参数表</b>
+      <span>Excel · 4 个工作表</span>
+    </a>
   </div>
 
   <footer>
