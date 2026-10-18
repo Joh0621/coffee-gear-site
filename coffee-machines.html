@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家用意式咖啡机对比 · 9 台横评（不含 3035C）</title>
+<style>
+  :root{--ink:#12213a;--ink2:#3d4a61;--muted:#6b7789;--line:#e4e9f2;--bg:#f6f7fb;--card:#fff;
+    --brand:#1f3864;--brand2:#2e5496;--accent:#c8102e;--ok:#166f45;--warn:#a3540a;
+    --warnbg:#fff6e8;--zebra:#f4f7fc}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px 72px}
+  .sm{font-size:11.5px;color:var(--muted);font-weight:400}
+  .ok{color:var(--ok);font-weight:700}.warn{color:var(--warn);font-weight:700}
+  .no{color:#9aa4b5;font-weight:600}.yes{color:var(--ok);font-weight:600}
+  .nowrap,.nw,td.pw{white-space:nowrap}
+  table.wide td.pw,table.wide td.nw{white-space:nowrap}
+
+  header.top{background:linear-gradient(135deg,#1f3864 0%,#2e5496 58%,#3d6bb8 100%);color:#fff;
+    padding:38px 0 30px;margin-bottom:30px;box-shadow:0 2px 18px rgba(20,35,70,.16)}
+  header.top .wrap{padding-bottom:0}
+  .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#b9cbe8;margin:0 0 10px}
+  h1{font-size:clamp(21px,3.4vw,30px);line-height:1.35;margin:0 0 12px;font-weight:700}
+  h1 .models{display:block;font-size:clamp(13.5px,1.9vw,16px);font-weight:500;color:#cfdcf2;margin-top:8px;line-height:1.7}
+  .meta{font-size:12.5px;color:#a9bee0;margin:14px 0 0}
+  .meta i{opacity:.5;font-style:normal;margin:0 8px}
+
+  .verdict{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+    border-left:4px solid var(--accent);border-radius:10px;padding:18px 20px;margin:0 0 30px;
+    box-shadow:0 1px 3px rgba(20,35,70,.05)}
+  .verdict .tag{flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.08em;color:#fff;
+    background:var(--accent);border-radius:4px;padding:3px 8px;margin-top:3px}
+  .verdict p{margin:0;font-size:15px;color:var(--ink2)}
+  .verdict strong{color:var(--ink);font-weight:700}
+
+  section{margin:0 0 46px}
+  h2{font-size:17px;margin:0 0 6px;font-weight:700;display:flex;align-items:center;gap:10px}
+  h2::before{content:"";width:4px;height:17px;border-radius:2px;background:linear-gradient(180deg,var(--brand2),#5b87cc)}
+  .sub{font-size:13px;color:var(--muted);margin:0 0 16px;padding-left:14px}
+
+  .chart{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px 8px;
+    box-shadow:0 1px 3px rgba(20,35,70,.05)}
+  .brow{display:grid;grid-template-columns:190px 1fr 92px;gap:12px;align-items:center;
+    padding:7px 0;border-bottom:1px dashed #eef1f7}
+  .brow:last-child{border-bottom:none}
+  .blab{font-size:12.8px;font-weight:600;line-height:1.3}
+  .blab .sm{display:block;font-weight:400}
+  .btrack{height:22px;background:#eef2f9;border-radius:5px;overflow:hidden}
+  .bfill{height:100%;border-radius:5px;background:linear-gradient(90deg,#3d6bb8,#2e5496);min-width:3px}
+  .bfill.bar-warn{background:linear-gradient(90deg,#e0902f,#b4610a)}
+  .bval{font-size:12.8px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+
+  .tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);
+    box-shadow:0 1px 3px rgba(20,35,70,.05);-webkit-overflow-scrolling:touch}
+  table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.5px}
+  table.deep{min-width:860px}
+  table.wide{min-width:1140px;font-size:12.8px;table-layout:fixed}
+  table.wide td,table.wide th{padding-left:11px;padding-right:11px}
+  thead th{position:sticky;top:0;z-index:3;background:var(--brand);color:#fff;font-weight:600;
+    font-size:13px;line-height:1.4;padding:13px 14px;text-align:left;vertical-align:bottom;border-bottom:1px solid #16294a}
+  thead th:first-child{left:0;z-index:4;background:#16294a;vertical-align:middle}
+  thead th.pick{background:var(--brand2)}
+  tbody th{position:sticky;left:0;z-index:2;background:var(--card);font-weight:600;font-size:13px;
+    text-align:left;vertical-align:top;padding:12px 14px;white-space:nowrap;
+    border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  tbody td{padding:12px 14px;vertical-align:top;color:var(--ink2);border-bottom:1px solid var(--line);border-right:1px solid #eef1f7}
+  tbody td:last-child{border-right:none}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  tbody tr:nth-child(even) th{background:var(--zebra)}
+  tbody tr:hover td{background:#eef3fc}
+  tbody tr:hover th{background:#eef3fc}
+  tr.hl-power th,tr.hl-power td{background:var(--warnbg)!important}
+  tr.hl-price th,tr.hl-price td{background:#f3f7ff!important}
+  tr.hl-warm th,tr.hl-warm td{background:#fdf6f0!important}
+  tr.hl-rate th,tr.hl-rate td{background:#fffdf3!important}
+  tr.is-pick td{background:#fffbe8!important}
+  table.wide td{white-space:normal}
+  td.price{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.mname{white-space:nowrap;min-width:118px}
+  td.say{font-size:11.8px;color:var(--muted);min-width:180px}
+  .stars{color:#e0a700;letter-spacing:2px;font-size:14px}
+  .stars i{color:#d5d9e2;font-style:normal}
+  .badge{display:inline-block;margin:3px 0 0;font-size:10px;font-weight:700;background:#ffd966;
+    color:#5a3d00;border-radius:4px;padding:1px 6px;vertical-align:middle;white-space:nowrap}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:14px}
+  .cards.cols-3{grid-template-columns:repeat(3,1fr)}
+  .cards.cols-4{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:900px){.cards.cols-3,.cards.cols-4{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.cards.cols-3,.cards.cols-4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    box-shadow:0 1px 3px rgba(20,35,70,.05)}
+  .card .lvl{font-size:11.5px;font-weight:700;color:var(--brand2);letter-spacing:.06em}
+  .card h3{font-size:15.5px;margin:6px 0 8px;font-weight:700}
+  .card p{margin:0;font-size:12.8px;color:var(--muted);line-height:1.62}
+  .card p.cost{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);color:var(--warn)}
+  .card.top{border-color:#c9d7ef;box-shadow:0 2px 10px rgba(46,84,150,.10)}
+  .card.top .lvl{color:var(--accent)}
+  .card ul{margin:8px 0 0;padding-left:18px;font-size:12.6px;color:var(--muted)}
+  .card ul li{margin-bottom:4px}
+
+  .btable{min-width:0;font-size:13.5px}
+  .btable thead th{position:static;font-size:12.5px;padding:11px 13px}
+  .btable tbody th{position:static;white-space:nowrap;border-right:1px solid var(--line)}
+  .btable td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .btable td.note{font-size:11.8px;color:var(--muted)}
+  .btable tr.total th,.btable tr.total td{background:#fff8e1!important;border-top:2px solid #e6c76a;font-weight:700;font-size:14px}
+  .btable tr.total td.num{color:var(--accent);font-size:15px}
+
+  .gates{display:grid;gap:10px}
+  .gate{display:flex;gap:13px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+    border-radius:10px;padding:14px 16px}
+  .gate .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;
+    font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .gate div{font-size:13.5px;color:var(--ink2)}.gate b{color:var(--ink)}
+
+  .src{font-size:12.8px;color:var(--muted);padding-left:14px}.src li{margin-bottom:7px}
+  .src a{color:#0b57b8;text-decoration:none;border-bottom:1px solid rgba(11,87,184,.25)}
+  .src a:hover{border-bottom-color:#0b57b8}
+  .disclaimer{font-size:12.5px;color:var(--warn);background:var(--warnbg);border:1px solid #f2dcb8;
+    border-radius:10px;padding:14px 16px;line-height:1.68}
+  .disclaimer b{color:#7a3f06}
+  footer.foot{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;
+    color:#98a2b3;text-align:center;line-height:1.8}
+
+  @media (max-width:720px){
+    .wrap{padding:0 14px 56px}
+    header.top{padding:26px 0 22px;margin-bottom:22px}
+    .verdict{flex-direction:column;gap:8px}
+    .brow{grid-template-columns:118px 1fr 74px;gap:8px}
+    .blab{font-size:11.8px}.bval{font-size:11.8px}
+    table.deep{min-width:820px}
+    table.wide{min-width:1120px}
+    thead th,tbody td,tbody th{padding:10px 11px}
+  }
+  @media print{
+    body{background:#fff}
+    header.top{background:#1f3864!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .tscroll{overflow:visible;box-shadow:none}
+    table{min-width:0!important}
+    thead th{position:static}tbody th{position:static;white-space:normal}
+    section{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Espresso Machine Comparison · 9 Models</p>
+    <h1>
+      家用意式咖啡机对比 · 9 台横评
+      <span class="models">格米莱 3035A / 3135H / 3124X / 3124F / 3148B　·　海氏 C7 / C9 Pro　·　百胜图 BAE-PRO1　·　Lelit Bianca V3</span>
+    </h1>
+    <p class="meta">
+      <span>数据采集 2026-10-18</span><i>·</i>
+      <span>参数：品牌官网 / 结构化参数库</span><i>·</i>
+      <span>价格：官方标价 + 近期成交价</span>
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="verdict">
+    <span class="tag">结论</span>
+    <p>
+      去掉 3035C 后，<strong>8k–10k 仍是家用的甜点区</strong>——往上是商用量级（重量 28kg+、深度 49cm+、16A 电路），
+      往下则牺牲泵或锅炉结构。这一档里有 <strong>3035A（10A、静音、小体积）</strong>、<strong>3135H（双锅炉满配）</strong>、
+      <strong>海氏 C7（最便宜的双表旋转泵 E61）</strong> 三台，按插座和出杯量选。
+    </p>
+  </div>
+
+  <section>
+    <h2>价格阶梯</h2>
+    <p class="sub">9 台按成交价排序 · 数字为近期公开成交价或官方参考价</p>
+    <div class="chart"><div class='brow'><div class='blab'>格米莱 3148B<span class='sm'>银鲨</span></div><div class='btrack'><div class='bfill ' style='width:53.6%'></div></div><div class='bval'>6,699 元</div></div>
+<div class='brow'><div class='blab'>海氏 C7<span class='sm'>理想家</span></div><div class='btrack'><div class='bfill ' style='width:67.2%'></div></div><div class='bval'>8,399 元</div></div>
+<div class='brow'><div class='blab'>格米莱 3135H<span class='sm'>白鲸Ultra</span></div><div class='btrack'><div class='bfill ' style='width:72.1%'></div></div><div class='bval'>9,010 元</div></div>
+<div class='brow'><div class='blab'>格米莱 3035A<span class='sm'>白鲸Pro</span></div><div class='btrack'><div class='bfill ' style='width:76.8%'></div></div><div class='bval'>9,599 元</div></div>
+<div class='brow'><div class='blab'>百胜图 BAE-PRO1<span class='sm'>研磨一体</span></div><div class='btrack'><div class='bfill ' style='width:86.4%'></div></div><div class='bval'>10,800 元</div></div>
+<div class='brow'><div class='blab'>格米莱 3124F<span class='sm'>企鹅2代</span></div><div class='btrack'><div class='bfill ' style='width:88.0%'></div></div><div class='bval'>10,999 元</div></div>
+<div class='brow'><div class='blab'>格米莱 3124X<span class='sm'>企鹅3代</span></div><div class='btrack'><div class='bfill ' style='width:100.0%'></div></div><div class='bval'>12,499 元</div></div>
+<div class='brow'><div class='blab'>海氏 C9 Pro<span class='sm'>开创者</span></div><div class='btrack'><div class='bfill ' style='width:100.0%'></div></div><div class='bval'>12,499 元</div></div>
+<div class='brow'><div class='blab'>Lelit Bianca V3<span class='sm'>进口标杆</span></div><div class='btrack'><div class='bfill ' style='width:100.0%'></div></div><div class='bval'>12,500 元</div></div></div>
+  </section>
+
+  <section>
+    <h2>参数深度对比（4 台 · 24 项）</h2>
+    <p class="sub">高亮行：价格 / 功率与插座 / 预热 / 家用适配度</p>
+    <div class='tscroll'><table class='deep'><thead><tr><th>参数</th>
+<th class='pick'>格米莱 3035A<br><span class='sm'>白鲸Pro</span><br><span class='badge'>家用首选</span></th>
+<th>格米莱 3135H<br><span class='sm'>白鲸Ultra</span></th>
+<th>格米莱 3124X<br><span class='sm'>企鹅3代</span></th>
+<th>海氏 C9 Pro<br><span class='sm'>开创者</span></th>
+</tr></thead><tbody>
+<tr class='hl-price'><th>价格</th>
+<td><b>≈9,599</b><br><span class='sm'>官方参考价</span></td>
+<td><b>≈9,010</b><br><span class='sm'>标价 12999 · 京东到手</span></td>
+<td><b>≈12,499</b><br><span class='sm'>官方参考价</span></td>
+<td><b>≈12,499</b><br><span class='sm'>官方参考价</span></td>
+</tr>
+<tr><th>定位</th>
+<td>家用 · 变压进阶</td>
+<td>家商两用 · 旗舰</td>
+<td>家商两用 · 旗舰</td>
+<td>家商两用 · 旗舰</td>
+</tr>
+<tr><th>冲煮头</th>
+<td>经典 E61</td>
+<td>E61 <b>纯铜</b></td>
+<td><b>饱和式</b> E61</td>
+<td>E61 <b>纯铜虹吸</b></td>
+</tr>
+<tr><th>冲煮头材质</th>
+<td>纯铜 + 电镀</td>
+<td>纯铜</td>
+<td>不锈钢（官网未标铜）</td>
+<td>纯铜虹吸</td>
+</tr>
+<tr><th>粉碗尺寸</th>
+<td>58 mm</td>
+<td>58 mm</td>
+<td>58 mm</td>
+<td>58 mm</td>
+</tr>
+<tr><th>变压方式</th>
+<td>拨杆 + <b>流量调节阀</b><br><span class='sm'>可调萃取流量</span></td>
+<td>拨杆变压<br><span class='sm'>可设流量、分段萃取</span></td>
+<td>拨杆变压<br><b>10–85 g/10s</b></td>
+<td>机械变压<br><b>0–9 bar 实时</b></td>
+</tr>
+<tr><th>锅炉</th>
+<td>2L 不锈钢<b>子母锅炉</b></td>
+<td><b>1L 萃取 + 1L 蒸汽</b></td>
+<td><b>300ml 萃取 + 2L 蒸汽</b></td>
+<td><b>1L 萃取 + 1.2L 蒸汽</b></td>
+</tr>
+<tr><th>独立温控</th>
+<td><span class='no'>✗ 单一锅炉</span></td>
+<td><span class='yes'>✓ 双 PID</span></td>
+<td><span class='yes'>✓ 2PID</span></td>
+<td><span class='yes'>✓ 双系统</span></td>
+</tr>
+<tr><th>泵</th>
+<td>福力德 <b>旋转泵</b> 9bar</td>
+<td>福力德 <b>旋转泵</b></td>
+<td>进口 <b>旋转泵</b> 9bar</td>
+<td>商用 <b>旋转泵</b> 9–10bar</td>
+</tr>
+<tr class='hl-power'><th>额定功率</th>
+<td>2100 W</td>
+<td>2600 W</td>
+<td>2900 W</td>
+<td>2800 W</td>
+</tr>
+<tr class='hl-power'><th>插座</th>
+<td><span class='ok'>10A</span> 即可</td>
+<td><span class='warn'>⚠ 16A</span></td>
+<td><span class='warn'>⚠ 16A</span></td>
+<td><span class='warn'>⚠ 16A</span></td>
+</tr>
+<tr><th>水箱</th>
+<td>1.7 L</td>
+<td>1.7 L</td>
+<td><b>2.5 L</b></td>
+<td>2.0 L</td>
+</tr>
+<tr><th>上下水</th>
+<td>✓ 可接进/排水管</td>
+<td>✓ 自动上下水</td>
+<td>✓ 自动上下水</td>
+<td>✓ 可接进/排水</td>
+</tr>
+<tr class='hl-warm'><th>预热</th>
+<td>约 6min 到温<br><b>≈15min</b> 达理想萃取</td>
+<td>官方约 6min<br><b>实测 ≈17min</b></td>
+<td>6min<br><b>≈10min</b> 达理想</td>
+<td>官方未标注<br><b>APP 定时预热</b></td>
+</tr>
+<tr><th>控温系统</th>
+<td>PID<br><span class='sm'>锅炉温度可调</span></td>
+<td><b>双 PID</b><br><span class='sm'>萃取/蒸汽可调</span></td>
+<td><b>2PID</b><br><span class='sm'>双锅炉独立设定</span></td>
+<td>PID/NTC<br><span class='sm'>OLED + APP</span></td>
+</tr>
+<tr><th>预浸泡</th>
+<td>可调时长</td>
+<td><b>第二代</b><br><span class='sm'>预注水/浸泡分开调</span></td>
+<td>可调时长</td>
+<td>可调时长</td>
+</tr>
+<tr><th>蒸汽棒</th>
+<td>3 孔 · 万向</td>
+<td>3 孔 · 万向</td>
+<td><b>4 孔</b>（可换 3 孔）</td>
+<td>3 孔 · 万向</td>
+</tr>
+<tr><th>压力表</th>
+<td>1 个（萃取）</td>
+<td><b>3 个</b><br><span class='sm'>萃取/蒸汽/水泵</span></td>
+<td>1 个（萃取）</td>
+<td>2 个<br><span class='sm'>萃取 + 蒸汽</span></td>
+</tr>
+<tr><th>屏幕 / 交互</th>
+<td>实体按钮 + 电子屏</td>
+<td><b>可调触控屏</b></td>
+<td>实体按钮 + 电子屏</td>
+<td><b>OLED + 触控 + APP</b></td>
+</tr>
+<tr><th>APP / 物联网</th>
+<td><span class='no'>✗</span></td>
+<td><span class='no'>✗ 未标注</span></td>
+<td><span class='no'>✗</span></td>
+<td><span class='yes'>✓ 定时开关机</span></td>
+</tr>
+<tr><th>重量</th>
+<td>≈25.1 kg</td>
+<td>≈26.3 kg</td>
+<td>≈28.5 kg<br><span class='sm'>第三方 30.7</span></td>
+<td><b>32.5 kg</b></td>
+</tr>
+<tr><th>尺寸 宽×深×高</th>
+<td>286 × 443 × 395</td>
+<td>286 × 443 × 395</td>
+<td>316 × <b>522</b> × 420</td>
+<td>315 × <b>493</b> × 406</td>
+</tr>
+<tr><th>质保</th>
+<td>2 年</td>
+<td>2 年</td>
+<td>2 年</td>
+<td>2 年 · 全国联保</td>
+</tr>
+<tr class='hl-rate'><th>家用适配度</th>
+<td><span class='stars'>★★★★★</span><br>10A + 小体积 + 旋泵静音</td>
+<td><span class='stars'>★★★★<i>☆</i></span><br>硬件满配，代价 16A + 17min</td>
+<td><span class='stars'>★★<i>☆☆☆</i></span><br>商用体格，纯家用偏浪费</td>
+<td><span class='stars'>★★★<i>☆☆</i></span><br>APP 定时是加分，但 32.5kg</td>
+</tr>
+</tbody></table></div>
+  </section>
+
+  <section>
+    <h2>9 台横向对比</h2>
+    <p class="sub">按价格从低到高 · 黄色底为家用首选</p>
+    <div class='tscroll'><table class='wide'><colgroup>
+<col style='width:122px'>
+<col style='width:60px'>
+<col style='width:84px'>
+<col style='width:90px'>
+<col style='width:60px'>
+<col style='width:90px'>
+<col style='width:78px'>
+<col style='width:74px'>
+<col style='width:58px'>
+<col style='width:90px'>
+<col style='width:58px'>
+<col style='width:104px'>
+<col style='width:172px'>
+</colgroup><thead><tr>
+<th>机型</th>
+<th>价格</th>
+<th>定位</th>
+<th>锅炉</th>
+<th>独立温控</th>
+<th>泵</th>
+<th>冲煮头</th>
+<th>功率 / 插座</th>
+<th>水箱</th>
+<th>预热</th>
+<th>重量</th>
+<th>宽×深×高</th>
+<th>一句话</th>
+</tr></thead><tbody>
+<tr>
+<td class='mname'><b>格米莱 3148B</b><br><span class='sm'>银鲨</span></td>
+<td class='price'>6,699</td>
+<td>家商两用</td>
+<td>0.55L + 1L</td>
+<td class='yes'>✓</td>
+<td>旋转泵 9bar</td>
+<td>半饱和式</td>
+<td class='pw'>2500 W<br><span class='warn'>16A</span></td>
+<td class='nw'>2.5L</td>
+<td>未标注</td>
+<td class='nw'>23.3 kg</td>
+<td class='nw'>351×392×476</td>
+<td class='say'>不是 E61，但有自动打奶 + 触控屏 + 双锅炉</td>
+</tr>
+<tr>
+<td class='mname'><b>海氏 C7</b><br><span class='sm'>理想家</span></td>
+<td class='price'>8,399</td>
+<td>家商两用</td>
+<td>0.2L + 1.8L 子母</td>
+<td class='yes'>✓</td>
+<td>旋转泵 9bar</td>
+<td>E61</td>
+<td class='pw'>2000 W<br><span class='ok'>10A</span></td>
+<td class='nw'>2L</td>
+<td>5min / 10–15min</td>
+<td class='nw'>26.0 kg</td>
+<td class='nw'>272×479×407</td>
+<td class='say'>最便宜的「E61 + 双表 + 旋转泵」</td>
+</tr>
+<tr>
+<td class='mname'><b>格米莱 3135H</b><br><span class='sm'>白鲸Ultra</span></td>
+<td class='price'>9,010</td>
+<td>家商旗舰</td>
+<td>1L + 1L 双</td>
+<td class='yes'>✓ 双PID</td>
+<td>福力德旋转泵</td>
+<td>E61</td>
+<td class='pw'>2600 W<br><span class='warn'>16A</span></td>
+<td class='nw'>1.7L</td>
+<td>实测 ≈17min</td>
+<td class='nw'>26.3 kg</td>
+<td class='nw'>286×443×395</td>
+<td class='say'>硬件最满配，但最费插座与等待</td>
+</tr>
+<tr class='is-pick'>
+<td class='mname'><b>格米莱 3035A</b><br><span class='sm'>白鲸Pro</span></td>
+<td class='price'>9,599</td>
+<td>家用进阶</td>
+<td>2L 子母</td>
+<td class='no'>✗</td>
+<td>福力德旋转泵</td>
+<td>E61</td>
+<td class='pw'>2100 W<br><span class='ok'>10A</span></td>
+<td class='nw'>1.7L</td>
+<td>≈15min</td>
+<td class='nw'>25.1 kg</td>
+<td class='nw'>286×443×395</td>
+<td class='say'>10A + 小体积 + 旋泵静音，家用最省心</td>
+</tr>
+<tr>
+<td class='mname'><b>百胜图 BAE-PRO1</b><br><span class='sm'>研磨一体</span></td>
+<td class='price'>10,800</td>
+<td>研磨一体</td>
+<td>双加热块</td>
+<td class='no'>△ 各自控温</td>
+<td>震动泵 ×2 · 12bar</td>
+<td>传统式</td>
+<td class='pw'>2800 W<br><span class='warn'>16A</span></td>
+<td class='nw'>未标注</td>
+<td>65秒 / 蒸汽38秒</td>
+<td class='nw'>11.88 kg</td>
+<td class='nw'>325×350×415</td>
+<td class='say'>唯一自带磨豆机 + 电子秤，开机最快</td>
+</tr>
+<tr>
+<td class='mname'><b>格米莱 3124F</b><br><span class='sm'>企鹅2代</span></td>
+<td class='price'>10,999</td>
+<td>家商两用</td>
+<td>子母</td>
+<td class='no'>✗</td>
+<td>旋转泵 9bar</td>
+<td>E61</td>
+<td class='pw'>2200 W<br><span class='ok'>10A</span></td>
+<td class='nw'>未标注</td>
+<td>未标注</td>
+<td class='nw'>29.4 kg</td>
+<td class='nw'>297×517×428</td>
+<td class='say'>3124X 的上一代，便宜 1500 但少 2PID</td>
+</tr>
+<tr>
+<td class='mname'><b>格米莱 3124X</b><br><span class='sm'>企鹅3代</span></td>
+<td class='price'>12,499</td>
+<td>家商旗舰</td>
+<td>300ml + 2L</td>
+<td class='yes'>✓ 2PID</td>
+<td>进口旋转泵 9bar</td>
+<td>饱和式E61</td>
+<td class='pw'>2900 W<br><span class='warn'>16A</span></td>
+<td class='nw'>2.5L</td>
+<td>6min / 10min</td>
+<td class='nw'>28.5 kg</td>
+<td class='nw'>316×522×420</td>
+<td class='say'>连续出杯最强，台面占用也最大</td>
+</tr>
+<tr>
+<td class='mname'><b>海氏 C9 Pro</b><br><span class='sm'>开创者</span></td>
+<td class='price'>12,499</td>
+<td>家商旗舰</td>
+<td>1L + 1.2L</td>
+<td class='yes'>✓</td>
+<td>旋转泵 9–10bar</td>
+<td>E61 纯铜虹吸</td>
+<td class='pw'>2800 W<br><span class='warn'>16A</span></td>
+<td class='nw'>2L</td>
+<td>未标注 / APP</td>
+<td class='nw'>32.5 kg</td>
+<td class='nw'>315×493×406</td>
+<td class='say'>唯一支持 APP 定时预热，红点设计奖</td>
+</tr>
+<tr>
+<td class='mname'><b>Lelit Bianca V3</b><br><span class='sm'>进口标杆</span></td>
+<td class='price'>12,500</td>
+<td>进口旗舰</td>
+<td>0.8L + 1.5L 双</td>
+<td class='yes'>✓</td>
+<td>旋转泵 9bar</td>
+<td>E61</td>
+<td class='pw'>1400 W<br><span class='ok'>10A</span></td>
+<td class='nw'>2.5L</td>
+<td>未标注</td>
+<td class='nw'>26.5 kg</td>
+<td class='nw'>290×485×400</td>
+<td class='say'>流量拨杆可实时控压，二手最保值</td>
+</tr>
+</tbody></table></div>
+  </section>
+
+  <section>
+    <h2>台面深度排序</h2>
+    <p class="sub">家用最容易忽略、又最容易翻车的一项 · 标准台面深 600mm，但柜体到墙面常只有 450–500mm</p>
+    <div class="chart"><div class='brow'><div class='blab'>百胜图 BAE-PRO1<span class='sm'>研磨一体</span></div><div class='btrack'><div class='bfill ' style='width:67.0%'></div></div><div class='bval'>350 mm</div></div>
+<div class='brow'><div class='blab'>格米莱 3148B<span class='sm'>银鲨</span></div><div class='btrack'><div class='bfill ' style='width:75.1%'></div></div><div class='bval'>392 mm</div></div>
+<div class='brow'><div class='blab'>格米莱 3135H<span class='sm'>白鲸Ultra</span></div><div class='btrack'><div class='bfill ' style='width:84.9%'></div></div><div class='bval'>443 mm</div></div>
+<div class='brow'><div class='blab'>格米莱 3035A<span class='sm'>白鲸Pro</span></div><div class='btrack'><div class='bfill ' style='width:84.9%'></div></div><div class='bval'>443 mm</div></div>
+<div class='brow'><div class='blab'>海氏 C7<span class='sm'>理想家</span></div><div class='btrack'><div class='bfill ' style='width:91.8%'></div></div><div class='bval'>479 mm</div></div>
+<div class='brow'><div class='blab'>Lelit Bianca V3<span class='sm'>进口标杆</span></div><div class='btrack'><div class='bfill ' style='width:92.9%'></div></div><div class='bval'>485 mm</div></div>
+<div class='brow'><div class='blab'>海氏 C9 Pro<span class='sm'>开创者</span></div><div class='btrack'><div class='bfill ' style='width:94.4%'></div></div><div class='bval'>493 mm</div></div>
+<div class='brow'><div class='blab'>格米莱 3124F<span class='sm'>企鹅2代</span></div><div class='btrack'><div class='bfill ' style='width:99.0%'></div></div><div class='bval'>517 mm</div></div>
+<div class='brow'><div class='blab'>格米莱 3124X<span class='sm'>企鹅3代</span></div><div class='btrack'><div class='bfill ' style='width:100.0%'></div></div><div class='bval'>522 mm</div></div></div>
+  </section>
+
+  <section>
+    <h2>功率与插座</h2>
+    <p class="sub">橙色 = 超过 10A（220V 下电流 &gt; 10A，需 16A 插座）</p>
+    <div class="chart"><div class='brow'><div class='blab'>Lelit Bianca V3<span class='sm'>进口标杆</span></div><div class='btrack'><div class='bfill ' style='width:48.3%'></div></div><div class='bval'>1400 W</div></div>
+<div class='brow'><div class='blab'>海氏 C7<span class='sm'>理想家</span></div><div class='btrack'><div class='bfill ' style='width:69.0%'></div></div><div class='bval'>2000 W</div></div>
+<div class='brow'><div class='blab'>格米莱 3035A<span class='sm'>白鲸Pro</span></div><div class='btrack'><div class='bfill ' style='width:72.4%'></div></div><div class='bval'>2100 W</div></div>
+<div class='brow'><div class='blab'>格米莱 3124F<span class='sm'>企鹅2代</span></div><div class='btrack'><div class='bfill ' style='width:75.9%'></div></div><div class='bval'>2200 W</div></div>
+<div class='brow'><div class='blab'>格米莱 3148B<span class='sm'>银鲨</span></div><div class='btrack'><div class='bfill bar-warn' style='width:86.2%'></div></div><div class='bval'>2500 W</div></div>
+<div class='brow'><div class='blab'>格米莱 3135H<span class='sm'>白鲸Ultra</span></div><div class='btrack'><div class='bfill bar-warn' style='width:89.7%'></div></div><div class='bval'>2600 W</div></div>
+<div class='brow'><div class='blab'>百胜图 BAE-PRO1<span class='sm'>研磨一体</span></div><div class='btrack'><div class='bfill bar-warn' style='width:96.6%'></div></div><div class='bval'>2800 W</div></div>
+<div class='brow'><div class='blab'>海氏 C9 Pro<span class='sm'>开创者</span></div><div class='btrack'><div class='bfill bar-warn' style='width:96.6%'></div></div><div class='bval'>2800 W</div></div>
+<div class='brow'><div class='blab'>格米莱 3124X<span class='sm'>企鹅3代</span></div><div class='btrack'><div class='bfill bar-warn' style='width:100.0%'></div></div><div class='bval'>2900 W</div></div></div>
+  </section>
+
+  <section>
+    <h2>看懂这六点就够</h2>
+    <p class="sub">扩到 9 台之后，真正拉开差距的还是这几件事</p>
+    <div class="cards cols-3">
+      <div class="card">
+        <span class="lvl">01 / 锅炉结构</span>
+        <h3>子母锅炉 ≠ 双锅炉</h3>
+        <p>3035A、C7、3124F 是<b>子母锅炉</b>（单锅炉热交换），连续出杯时萃取与蒸汽互相牵制；3135H、3124X、C9 Pro、3148B、Bianca 是<b>独立双锅炉</b>，才能边萃边打不掉温。</p>
+      </div>
+      <div class="card">
+        <span class="lvl">02 / 水泵</span>
+        <h3>震动泵是家用最大噪音源</h3>
+        <p>9 台里只剩 <b>百胜图 PRO1（双震动泵）</b>用震动泵。其余 8 台都是旋转泵——不只是静音，压力曲线也更平。</p>
+      </div>
+      <div class="card">
+        <span class="lvl">03 / 冲煮头</span>
+        <h3>不是所有机器都是 E61</h3>
+        <p><b>3148B 是半饱和式</b>、<b>PRO1 是传统式</b>。E61 的好处是热虹吸保温 + 机械预浸 + 可玩性；坏处是那一大坨金属永远是最慢热的部件。</p>
+      </div>
+      <div class="card">
+        <span class="lvl">04 / 电路</span>
+        <h3>16A 是硬门槛</h3>
+        <p>3135H（2600W）、3124X（2900W）、C9 Pro（2800W）、PRO1（2800W）、3148B（2500W）都要 16A。国内厨房台面默认多为 10A，这一条先筛掉一半选项。</p>
+      </div>
+      <div class="card">
+        <span class="lvl">05 / 预热</span>
+        <h3>官方 6 分钟 ≠ 能出杯</h3>
+        <p>E61 的分水网上方是块大散热片。3135H 机主实测 <b>17 分钟</b>，3035A 约 <b>15 分钟</b>。唯一绕过去的办法是 <b>APP 定时预热（C9 Pro）</b> 或智能插座。</p>
+      </div>
+      <div class="card">
+        <span class="lvl">06 / 体积重量</span>
+        <h3>11.88kg 到 32.5kg</h3>
+        <p>最轻的是研磨一体机 <b>PRO1（11.88kg / 深 350mm）</b>，最重的是 <b>C9 Pro（32.5kg）</b>。深度从 350mm 到 522mm，差了一整排橱柜。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>同价位横切</h2>
+    <p class="sub">预算一旦定下来，真正要选的就那么两三台</p>
+    <div class="cards cols-4">
+      <div class="card">
+        <span class="lvl">6–7K</span>
+        <h3>3148B</h3>
+        <ul>
+          <li><b>3148B</b> 6,699 — 半饱和式 + 双锅炉 + 旋泵 + 自动打奶，性价比高但不是 E61</li>
+        </ul>
+        <p class="cost">这一档的选择不多：要么加钱上 E61</p>
+      </div>
+      <div class="card top">
+        <span class="lvl">8–10K · 甜点区</span>
+        <h3>C7 · 3135H · 3035A</h3>
+        <ul>
+          <li><b>C7</b> 8,399 — 最便宜的双表旋转泵 E61，10A</li>
+          <li><b>3135H</b> 9,010 — 双锅炉 + 双PID + 三表，需 16A</li>
+          <li><b>3035A</b> 9,599 — 10A + 静音 + 小体积，家用最省心</li>
+        </ul>
+        <p class="cost">三台都能买，按插座和出杯量选</p>
+      </div>
+      <div class="card">
+        <span class="lvl">10–11K</span>
+        <h3>PRO1 · 3124F</h3>
+        <ul>
+          <li><b>PRO1</b> 10,800 — 研磨一体 + 内置秤，65 秒开机，但双加热块</li>
+          <li><b>3124F</b> 10,999 — 3124X 上一代，少 2PID，便宜 1,500</li>
+        </ul>
+        <p class="cost">这一档很尴尬：加钱上 12.5k，或省钱退到 9k</p>
+      </div>
+      <div class="card">
+        <span class="lvl">12.5K</span>
+        <h3>3124X · C9 Pro · Bianca V3</h3>
+        <ul>
+          <li><b>3124X</b> — 连续出杯最强，深 522mm</li>
+          <li><b>C9 Pro</b> — APP 定时预热，重 32.5kg</li>
+          <li><b>Bianca V3</b> — 流量拨杆实时控压，二手最保值</li>
+        </ul>
+        <p class="cost">纯家用三台都过剩，除非要开店/摆摊</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>1 万元落地配单</h2>
+    <p class="sub">不含咖啡豆 · 标「估价」的项目未逐个核价</p>
+    <div class="tscroll">
+      <table class="btable">
+        <thead><tr><th style="width:130px">项目</th><th>型号 / 规格</th><th style="width:110px">参考价</th><th style="width:290px">备注</th></tr></thead>
+        <tbody>
+          <tr><th>主机</th><td>格米莱 3148B 银鲨</td><td class="num">6,699</td><td class="note">双锅炉 + 旋转泵 + 自动打奶；半饱和式冲煮头</td></tr>
+          <tr><th>磨豆机</th><td>格米莱 9015C（64mm 平刀）</td><td class="num">1,500</td><td class="note">估价，未核实；官方搭配逻辑即配这一档</td></tr>
+          <tr><th>电子秤</th><td>带计时、0.1g 精度</td><td class="num">200</td><td class="note">估价</td></tr>
+          <tr><th>布粉器</th><td>58mm WDT 针式</td><td class="num">150</td><td class="note">估价；解决通道效应的关键小件</td></tr>
+          <tr><th>粉锤</th><td>58.5mm 恒力粉锤</td><td class="num">200</td><td class="note">估价</td></tr>
+          <tr><th>手柄</th><td>58mm 无底手柄</td><td class="num">250</td><td class="note">估价；看流速诊断用</td></tr>
+          <tr><th>清洁耗材</th><td>反冲洗粉、清洁刷、压粉垫、接粉环</td><td class="num">200</td><td class="note">估价</td></tr>
+          <tr><th>用水</th><td>软水 / 低矿化瓶装水或滤水壶</td><td class="num">100</td><td class="note">硬水半年即结垢，别用自来水</td></tr>
+          <tr class="total"><th>合计</th><td>约余 0.7k 给咖啡豆与后续扩容</td><td class="num">≈ 9,299</td><td class="note">预算到 1.2 万：3035A + 9015C ≈ 1.11 万</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>下单前必须确认的三件事</h2>
+    <div class="gates">
+      <div class="gate"><span class="n">1</span><div><b>插座</b>　厨房台面是 10A 还是 16A？3135H / 3124X / C9 Pro / PRO1 / 3148B 都需要 16A。</div></div>
+      <div class="gate"><span class="n">2</span><div><b>台面深度</b>　量墙面到台面前沿：350–443mm 好放，479–522mm 会明显凸出或压住过道。</div></div>
+      <div class="gate"><span class="n">3</span><div><b>磨豆机预算</b>　除 PRO1 自带研磨外，其余 8 台都不带磨，需另加 1000–2000 元。</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="disclaimer">
+      <b>⚠ 数据口径</b><br>
+      京东商品详情页为 JS 渲染 + 反爬，本次<b>无法直接抓取页面上的实时价格</b>。参数取自格米莱官网产品页、
+      海氏官方口径与咖啡搭子结构化参数库；价格取官方标价与近期公开成交价（含国补口径），
+      与你打开京东看到的实时价<b>可能不同，下单请以页面为准</b>。<br>
+      另：3124X 官网同页顶部有一个 <code>4700W / 62.5kg / 768×582×487</code> 的参数块，与下方「产品参数」表的
+      <code>2900W / 28.5kg / 316×522×420</code> 矛盾——前者应为双头机型串页错误，本页采用后者。<br>
+      Lelit Bianca V3 的国内渠道机不带官方中文售后，价格与保修以渠道商为准。
+    </div>
+  </section>
+
+  <section>
+    <h2>数据来源</h2>
+    <ul class="src">
+      <li>格米莱 3135H 官网 — <a href="http://www.xn--0xvx36b6if.com/productshow-58-2.html" target="_blank" rel="noopener">productshow-58-2</a></li>
+      <li>格米莱 3124X 官网 — <a href="http://www.xn--0xvx36b6if.com/productshow-3-2.html" target="_blank" rel="noopener">productshow-3-2</a></li>
+      <li>3035A / C9 Pro / Bianca V3 / C7 / 3148B / PRO1 / 3124F 参数 — <a href="https://www.kafeidazi.com/equipment/espresso/" target="_blank" rel="noopener">咖啡搭子机型库</a></li>
+      <li>C9 Pro 配置解读 — <a href="http://www.cheari.com/article.html?id=28975" target="_blank" rel="noopener">环球家电网</a></li>
+      <li>3135H 实测 17min — <a href="https://post.smzdm.com/p/avgxk6zm/" target="_blank" rel="noopener">什么值得买</a></li>
+      <li>3135H vs Bianca V3 — <a href="https://post.smzdm.com/p/a3mxkqwn/" target="_blank" rel="noopener">什么值得买</a></li>
+      <li>白鲸线三档价格 — <a href="https://post.smzdm.com/p/a5rx8qw8/" target="_blank" rel="noopener">什么值得买</a></li>
+      <li>6 款 E61 横评 — <a href="https://post.m.smzdm.com/zz/p/avvplrwn/" target="_blank" rel="noopener">什么值得买</a></li>
+    </ul>
+  </section>
+
+  <footer class="foot">
+    9 台机型（不含 3035C）· 参数与价格整理于 2026-10-18 · 主观建议，仅供参考<br>
+    配套文件：咖啡机对比_格米莱vs海氏_家用选型.xlsx · 咖啡机两年持有成本.html
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家用咖啡设备选型 · 咖啡机 / 磨豆机 / 持有成本</title>
+<style>
+  :root{--ink:#12213a;--ink2:#3d4a61;--muted:#6b7789;--line:#e4e9f2;--bg:#f6f7fb;
+    --card:#fff;--brand:#1f3864;--brand2:#2e5496;--accent:#c8102e}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px 64px}
+  header{background:linear-gradient(135deg,#1f3864 0%,#2e5496 58%,#3d6bb8 100%);color:#fff;
+    padding:44px 0 38px;margin-bottom:34px;box-shadow:0 2px 18px rgba(20,35,70,.16)}
+  header .wrap{padding-bottom:0}
+  .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#b9cbe8;margin:0 0 10px}
+  h1{font-size:clamp(22px,3.6vw,30px);margin:0 0 12px;font-weight:700;line-height:1.35}
+  header p{margin:0;font-size:14px;color:#cfdcf2}
+  .grid{display:grid;gap:16px}
+  a.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;text-decoration:none;color:inherit;box-shadow:0 1px 3px rgba(20,35,70,.05);
+    transition:transform .15s,box-shadow .15s,border-color .15s}
+  a.card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(20,35,70,.10);border-color:#c9d7ef}
+  .card .num{font-size:11.5px;font-weight:700;letter-spacing:.1em;color:var(--brand2)}
+  .card h2{font-size:18px;margin:8px 0 8px;font-weight:700}
+  .card p{margin:0;font-size:13.2px;color:var(--muted);line-height:1.65}
+  .card .tags{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:600;color:var(--brand2);background:#eef3fc;border-radius:5px;padding:2px 8px}
+  .tag.hot{background:#fdeaea;color:var(--accent)}
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;
+    color:#98a2b3;text-align:center;line-height:1.9}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Home Coffee Gear · 2026</p>
+    <h1>家用咖啡设备选型</h1>
+    <p>咖啡机 9 台横评 · 磨豆机 8 台对比 · 两年持有成本测算</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="grid">
+    <a class="card" href="coffee-machines.html">
+      <span class="num">01 / MACHINES</span>
+      <h2>咖啡机对比 · 9 台横评</h2>
+      <p>格米莱 3035A / 3135H / 3124X / 3124F / 3148B、海氏 C7 / C9 Pro、百胜图 BAE-PRO1、Lelit Bianca V3。
+         含 24 项深度参数、价格阶梯、台面深度与功率排序、1 万元落地配单。</p>
+      <div class="tags"><span class="tag">9 台</span><span class="tag">24 项参数</span><span class="tag hot">家用首选：3035A</span></div>
+    </a>
+
+    <a class="card" href="grinders.html">
+      <span class="num">02 / GRINDERS</span>
+      <h2>磨豆机对比 · 8 台平刀</h2>
+      <p>格米莱 9015C / 9018A、海氏 G1 二代、Eureka Zero / Zero 65、DF64V Gen 3、泰摩 064S、Mazzer Mini。
+         含「淬硬钢 vs 不锈钢」术语卡、材质→寿命换算、按材质筛选机型。</p>
+      <div class="tags"><span class="tag">8 台</span><span class="tag">全钢 / 低残粉</span><span class="tag hot">残粉实测方法</span></div>
+    </a>
+
+    <a class="card" href="tco.html">
+      <span class="num">03 / COST</span>
+      <h2>两年持有成本 · 可交互测算</h2>
+      <p>购机价 + 磨豆机折旧 + 电费 + 耗材 − 二手残值。电价、日杯数、持有年限、残值情景都能拖，
+         净持有成本实时刷新。</p>
+      <div class="tags"><span class="tag">可调参数</span><span class="tag">净持有成本</span><span class="tag hot">Bianca V3 反直觉</span></div>
+    </a>
+  </div>
+
+  <footer>
+    数据整理于 2026-10-18 · 参数来自品牌官网与结构化参数库<br>
+    价格随市场波动，下单请以实际页面为准
+  </footer>
+</div>
+</body>
+</html>

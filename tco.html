@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>两年持有成本 · 9 台咖啡机（不含格米莱 3035C）</title>
+<style>
+  :root{
+    --ink:#12213a;--ink2:#3d4a61;--muted:#6b7789;--line:#e4e9f2;--bg:#f6f7fb;--card:#fff;
+    --brand:#1f3864;--brand2:#2e5496;--accent:#c8102e;--ok:#166f45;--warn:#a3540a;
+    --warnbg:#fff6e8;--zebra:#f4f7fc;--green:#1a7f4b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px 72px}
+  .sm{font-size:11.5px;color:var(--muted);font-weight:400}
+
+  header.top{background:linear-gradient(135deg,#1f3864 0%,#2e5496 58%,#3d6bb8 100%);color:#fff;
+    padding:38px 0 30px;margin-bottom:28px;box-shadow:0 2px 18px rgba(20,35,70,.16)}
+  header.top .wrap{padding-bottom:0}
+  .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#b9cbe8;margin:0 0 10px}
+  h1{font-size:clamp(21px,3.2vw,28px);line-height:1.35;margin:0 0 12px;font-weight:700}
+  h1 .sub{display:block;font-size:clamp(13.5px,1.9vw,16px);font-weight:500;color:#cfdcf2;margin-top:8px}
+  .meta{font-size:12.5px;color:#a9bee0;margin:14px 0 0}
+  .meta i{opacity:.5;font-style:normal;margin:0 8px}
+
+  section{margin:0 0 42px}
+  h2{font-size:17px;margin:0 0 6px;font-weight:700;display:flex;align-items:center;gap:10px}
+  h2::before{content:"";width:4px;height:17px;border-radius:2px;background:linear-gradient(180deg,var(--brand2),#5b87cc)}
+  .sub{font-size:13px;color:var(--muted);margin:0 0 16px;padding-left:14px}
+
+  /* ---------- controls ---------- */
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;
+    box-shadow:0 1px 3px rgba(20,35,70,.05)}
+  .ctrl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px 26px}
+  .ctrl label{display:block;font-size:12.5px;font-weight:600;color:var(--ink2);margin-bottom:8px}
+  .ctrl .val{color:var(--brand2);font-weight:800;font-size:15px}
+  .ctrl .unit{color:var(--muted);font-size:11.5px;font-weight:400}
+  input[type=range]{width:100%;accent-color:var(--brand2);height:26px}
+  .seg{display:flex;gap:6px;flex-wrap:wrap}
+  .seg button{border:1px solid var(--line);background:#fff;color:var(--ink2);font-size:12.5px;
+    padding:6px 14px;border-radius:7px;cursor:pointer;font-weight:600}
+  .seg button.on{background:var(--brand2);color:#fff;border-color:var(--brand2)}
+
+  /* ---------- chart ---------- */
+  .chart{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px 8px;
+    box-shadow:0 1px 3px rgba(20,35,70,.05)}
+  .brow{display:grid;grid-template-columns:150px 1fr 110px;gap:12px;align-items:center;
+    padding:7px 0;border-bottom:1px dashed #eef1f7}
+  .brow:last-child{border-bottom:none}
+  .blab{font-size:12.8px;font-weight:600;line-height:1.3}
+  .blab .sm{display:block;font-weight:400}
+  .btrack{height:22px;background:#eef2f9;border-radius:5px;overflow:hidden}
+  .bfill{height:100%;border-radius:5px;background:linear-gradient(90deg,#3d6bb8,#2e5496);min-width:3px}
+  .bfill.min{background:linear-gradient(90deg,#34a06a,#1a7f4b)}
+  .bval{font-size:12.8px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+
+  /* ---------- table ---------- */
+  .tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);
+    box-shadow:0 1px 3px rgba(20,35,70,.05);-webkit-overflow-scrolling:touch}
+  table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px;min-width:900px}
+  thead th{position:sticky;top:0;z-index:3;background:var(--brand);color:#fff;font-weight:600;
+    font-size:12.5px;padding:12px 12px;text-align:right;border-bottom:1px solid #16294a}
+  thead th:first-child{text-align:left;left:0;z-index:4;background:#16294a}
+  thead th.l{text-align:left}
+  tbody th{position:sticky;left:0;z-index:2;background:var(--card);font-weight:600;font-size:12.8px;
+    text-align:left;padding:11px 12px;white-space:nowrap;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  tbody td{padding:11px 12px;text-align:right;color:var(--ink2);border-bottom:1px solid var(--line);
+    border-right:1px solid #eef1f7;font-variant-numeric:tabular-nums;white-space:nowrap}
+  tbody td:last-child{border-right:none}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  tbody tr:nth-child(even) th{background:var(--zebra)}
+  tbody tr:hover td{background:#eef3fc}
+  tbody tr:hover th{background:#eef3fc}
+  td.net{font-weight:800;color:var(--ink);font-size:14px}
+  td.net.min{color:var(--green)}
+  td.neg{color:var(--green);font-weight:700}
+  td.hint{color:var(--muted);font-size:11.5px}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    box-shadow:0 1px 3px rgba(20,35,70,.05)}
+  .card .lvl{font-size:11.5px;font-weight:700;color:var(--brand2);letter-spacing:.06em}
+  .card h3{font-size:15.5px;margin:6px 0 8px;font-weight:700}
+  .card p{margin:0;font-size:12.8px;color:var(--muted);line-height:1.62}
+  .card p b{color:var(--ink)}
+
+  .disclaimer{font-size:12.5px;color:var(--warn);background:var(--warnbg);border:1px solid #f2dcb8;
+    border-radius:10px;padding:14px 16px;line-height:1.7}
+  .disclaimer b{color:#7a3f06}
+  .assume{font-size:12.6px;color:var(--muted);padding-left:14px}
+  .assume li{margin-bottom:6px}
+  .assume b{color:var(--ink2)}
+
+  @media (max-width:720px){
+    .wrap{padding:0 14px 56px}
+    header.top{padding:26px 0 22px;margin-bottom:22px}
+    .brow{grid-template-columns:108px 1fr 86px;gap:8px}
+    .blab{font-size:11.8px}.bval{font-size:11.8px}
+    table{min-width:860px}
+  }
+  @media print{
+    body{background:#fff}
+    header.top{background:#1f3864!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .tscroll,.chart{overflow:visible;box-shadow:none}
+    table{min-width:0!important}
+    thead th{position:static}tbody th{position:static;white-space:normal}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Total Cost of Ownership · 2 Years</p>
+    <h1>
+      两年持有成本对比
+      <span class="sub">9 台（不含格米莱 3035C）· 购机价之外，把电费、耗材、磨豆机折旧和二手残值一起算</span>
+    </h1>
+    <p class="meta">
+      <span>所有假设可调</span><i>·</i>
+      <span>结果随输入实时刷新</span><i>·</i>
+      <span>口径见页尾</span>
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ 控制面板 ============ -->
+  <section>
+    <div class="panel ctrl-grid">
+      <div class="ctrl">
+        <label>居民电价 <span class="val" id="vPrice">0.55</span> <span class="unit">元 / kWh</span></label>
+        <input type="range" id="price" min="0.30" max="0.90" step="0.05" value="0.55">
+      </div>
+      <div class="ctrl">
+        <label>每天杯数 <span class="val" id="vCups">2</span> <span class="unit">杯</span></label>
+        <input type="range" id="cups" min="1" max="6" step="1" value="2">
+      </div>
+      <div class="ctrl">
+        <label>持有年限 <span class="val" id="vYears">2</span> <span class="unit">年</span></label>
+        <input type="range" id="years" min="1" max="5" step="1" value="2">
+      </div>
+      <div class="ctrl">
+        <label>二手残值情景</label>
+        <div class="seg" id="scen">
+          <button data-m="0.60">悲观</button>
+          <button data-m="1.00" class="on">中性</button>
+          <button data-m="1.25">乐观</button>
+        </div>
+        <div class="sm" style="margin-top:6px">对基准残值率按系数缩放</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 净持有成本图 ============ -->
+  <section>
+    <h2>净持有成本</h2>
+    <p class="sub">购机价 + 磨豆机折旧 + 电费 + 耗材 − 二手残值回收　·　绿色为最低</p>
+    <div class="chart" id="bars"></div>
+  </section>
+
+  <!-- ============ 明细表 ============ -->
+  <section>
+    <h2>明细表</h2>
+    <p class="sub">残值回收为负数（卖出机器回流的钱）</p>
+    <div class="tscroll">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th class="l" style="min-width:150px">机型</th>
+            <th>购机价</th>
+            <th>磨豆机折旧</th>
+            <th>电费</th>
+            <th>耗材</th>
+            <th>残值回收</th>
+            <th>净持有成本</th>
+            <th>月均</th>
+            <th>每杯</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 结论 ============ -->
+  <section>
+    <h2>三个容易被忽略的结论</h2>
+    <div class="cards">
+      <div class="card">
+        <span class="lvl">01 / 残值</span>
+        <h3>最贵的机器，未必最贵</h3>
+        <p><b>Bianca V3</b> 购机价 12,500 最高，但两年后残值回收多、电费最低（1400W），净持有成本可能反超不上 <b>3135H / 3124X / C9 Pro</b>。前提是它「好出手、保值」的假设成立。</p>
+      </div>
+      <div class="card">
+        <span class="lvl">02 / 电费</span>
+        <h3>预热是 E61 的隐性税</h3>
+        <p>两年电费差距其实很小（几百元量级），真正拉开的是<b>预热功率 × 时长</b>：3135H 2600W × 17min 最贵，PRO1 65 秒开机几乎不预热。但这点钱和购机价比，可以忽略。</p>
+      </div>
+      <div class="card">
+        <span class="lvl">03 / 磨豆机</span>
+        <h3>1500 元的磨，两年折 750</h3>
+        <p>除 PRO1 自带研磨外，其余 8 台都要另配磨豆机。这部分折旧约 750 元，占净持有成本 10–20%，常被算漏。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 假设 ============ -->
+  <section>
+    <h2>计算假设</h2>
+    <ul class="assume">
+      <li><b>电费</b>：预热阶段按额定功率满负荷、预热时长见机型；出杯每杯另计 0.04 kWh；每天开机预热 1 次。</li>
+      <li><b>预热时长</b>：3035A / 3124F / C9 Pro / Bianca 取 15 min，C7 / 3148B 取 12 min，3135H 取 17 min（机主实测），3124X 取 10 min，PRO1 取 65 秒。</li>
+      <li><b>耗材</b>：除垢剂、反冲洗粉、清洁片、密封圈等，国产机 300 元/年，Bianca 500 元/年（进口配件）。</li>
+      <li><b>磨豆机</b>：需另配的机器按 1500 元、期内贬值 50%（即折 750 元）计；PRO1 自带研磨计 0。</li>
+      <li><b>二手残值率（基准）</b>：Bianca V3 70%、3135H / 3124X / C9 Pro 45%、3035A 42%、C7 / 3148B / 3124F 40%、PRO1 35%。可按「悲观 / 中性 / 乐观」整体缩放。</li>
+      <li><b>不含</b>：咖啡豆、水电以外的安装改线费用、意外维修费。</li>
+    </ul>
+    <div class="disclaimer" style="margin-top:14px">
+      <b>⚠ 这组数不是精确预测，是「量级对比」。</b> 尤其二手残值率是经验估算，且随市场行情波动最大；
+      若你在「悲观」档下结论也成立，那结论就相对稳。所有输入可在上方实时调整，自己压一压。
+    </div>
+  </section>
+
+</div>
+
+<script>
+const M = [
+  {n:"格米莱 3148B", s:"银鲨",      price:6699,  w:2500, pre:12, grinder:1500, res:0.40, parts:300},
+  {n:"海氏 C7",      s:"理想家",    price:8399,  w:2000, pre:12, grinder:1500, res:0.40, parts:300},
+  {n:"格米莱 3135H", s:"白鲸Ultra", price:9010,  w:2600, pre:17, grinder:1500, res:0.45, parts:300},
+  {n:"格米莱 3035A", s:"白鲸Pro",   price:9599,  w:2100, pre:15, grinder:1500, res:0.42, parts:300},
+  {n:"百胜图 PRO1",  s:"研磨一体",  price:10800, w:2800, pre:1.1,grinder:0,    res:0.35, parts:300},
+  {n:"格米莱 3124F", s:"企鹅2代",   price:10999, w:2200, pre:15, grinder:1500, res:0.40, parts:300},
+  {n:"格米莱 3124X", s:"企鹅3代",   price:12499, w:2900, pre:10, grinder:1500, res:0.45, parts:300},
+  {n:"海氏 C9 Pro",  s:"开创者",    price:12499, w:2800, pre:15, grinder:1500, res:0.45, parts:300},
+  {n:"Lelit V3",     s:"Bianca",    price:12500, w:1400, pre:15, grinder:1500, res:0.70, parts:500},
+];
+
+function fmt(n){return n.toLocaleString("zh-CN",{maximumFractionDigits:0})}
+function fmt1(n){return n.toLocaleString("zh-CN",{maximumFractionDigits:1})}
+
+function compute(){
+  const price = +document.getElementById("price").value;
+  const cups  = +document.getElementById("cups").value;
+  const years = +document.getElementById("years").value;
+  const m = +document.querySelector("#scen button.on").dataset.m;
+
+  const rows = M.map(it => {
+    const preheatKwh = (it.w/1000)*(it.pre/60);
+    const dailyKwh = preheatKwh + cups*0.04;
+    const elec = dailyKwh * 365 * years * price;
+    const parts = it.parts * years;
+    const grinderDep = it.grinder ? 1500*0.5 : 0;
+    const residue = it.price * it.res * m;
+    const net = it.price + grinderDep + elec + parts - residue;
+    const monthly = net/(years*12);
+    const perCup = net/(cups*365*years);
+    return {it, elec, parts, grinderDep, residue, net, monthly, perCup};
+  });
+
+  const minNet = Math.min(...rows.map(r=>r.net));
+  const maxNet = Math.max(...rows.map(r=>r.net));
+
+  // bars
+  const bars = document.getElementById("bars");
+  bars.innerHTML = rows.slice().sort((a,b)=>a.net-b.net).map(r=>{
+    const pct = (r.net/maxNet)*100;
+    const cls = r.net===minNet ? "bfill min" : "bfill";
+    return `<div class="brow">
+      <div class="blab">${r.it.n}<span class="sm">${r.it.s}</span></div>
+      <div class="btrack"><div class="${cls}" style="width:${pct.toFixed(1)}%"></div></div>
+      <div class="bval">¥ ${fmt(r.net)}</div>
+    </div>`;
+  }).join("");
+
+  // table
+  const tb = document.querySelector("#tbl tbody");
+  tb.innerHTML = rows.slice().sort((a,b)=>a.net-b.net).map(r=>{
+    const min = r.net===minNet ? " net min" : " net";
+    return `<tr>
+      <th>${r.it.n}<span class="sm"> ${r.it.s}</span></th>
+      <td>${fmt(r.it.price)}</td>
+      <td>${fmt(r.grinderDep)}</td>
+      <td class="hint">${fmt(r.elec)}</td>
+      <td class="hint">${fmt(r.parts)}</td>
+      <td class="neg">−${fmt(r.residue)}</td>
+      <td class="${min}">¥ ${fmt(r.net)}</td>
+      <td>¥ ${fmt(r.monthly)}</td>
+      <td class="hint">¥ ${fmt1(r.perCup)}</td>
+    </tr>`;
+  }).join("");
+}
+
+function bind(){
+  document.getElementById("price").addEventListener("input", e=>{document.getElementById("vPrice").textContent=(+e.target.value).toFixed(2);compute();});
+  document.getElementById("cups").addEventListener("input", e=>{document.getElementById("vCups").textContent=e.target.value;compute();});
+  document.getElementById("years").addEventListener("input", e=>{document.getElementById("vYears").textContent=e.target.value;compute();});
+  document.querySelectorAll("#scen button").forEach(b=>{
+    b.addEventListener("click", ()=>{
+      document.querySelectorAll("#scen button").forEach(x=>x.classList.remove("on"));
+      b.classList.add("on"); compute();
+    });
+  });
+  compute();
+}
+bind();
+</script>
+</body>
+</html>

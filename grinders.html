@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>平刀磨豆机对比 · 8 台（全钢 / 低残粉 / 稳定）</title>
+<style>
+  :root{
+    --ink:#12213a;--ink2:#3d4a61;--muted:#6b7789;--line:#e4e9f2;--bg:#f6f7fb;--card:#fff;
+    --brand:#1f3864;--brand2:#2e5496;--accent:#c8102e;--ok:#166f45;--warn:#a3540a;
+    --warnbg:#fff6e8;--zebra:#f4f7fc;--gold:#a8741a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 20px 72px}
+  .sm{font-size:11.5px;color:var(--muted);font-weight:400}
+
+  header.top{background:linear-gradient(135deg,#1f3864 0%,#2e5496 58%,#3d6bb8 100%);color:#fff;
+    padding:38px 0 30px;margin-bottom:28px;box-shadow:0 2px 18px rgba(20,35,70,.16)}
+  header.top .wrap{padding-bottom:0}
+  .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#b9cbe8;margin:0 0 10px}
+  h1{font-size:clamp(21px,3.2vw,29px);line-height:1.35;margin:0 0 12px;font-weight:700}
+  h1 .sub{display:block;font-size:clamp(13.5px,1.9vw,16px);font-weight:500;color:#cfdcf2;margin-top:8px;line-height:1.7}
+  .meta{font-size:12.5px;color:#a9bee0;margin:14px 0 0}
+  .meta i{opacity:.5;font-style:normal;margin:0 8px}
+
+  .verdict{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+    border-left:4px solid var(--accent);border-radius:10px;padding:18px 20px;margin:0 0 30px;
+    box-shadow:0 1px 3px rgba(20,35,70,.05)}
+  .verdict .tag{flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.08em;color:#fff;
+    background:var(--accent);border-radius:4px;padding:3px 8px;margin-top:3px}
+  .verdict p{margin:0;font-size:15px;color:var(--ink2)}
+  .verdict strong{color:var(--ink);font-weight:700}
+
+  section{margin:0 0 44px}
+  h2{font-size:17px;margin:0 0 6px;font-weight:700;display:flex;align-items:center;gap:10px}
+  h2::before{content:"";width:4px;height:17px;border-radius:2px;background:linear-gradient(180deg,var(--brand2),#5b87cc)}
+  .sub2{font-size:13px;color:var(--muted);margin:0 0 16px;padding-left:14px}
+
+  .tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);
+    box-shadow:0 1px 3px rgba(20,35,70,.05);-webkit-overflow-scrolling:touch}
+  table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
+  table.t1{min-width:1190px}
+  thead th{position:sticky;top:0;z-index:3;background:var(--brand);color:#fff;font-weight:600;
+    font-size:12.5px;line-height:1.4;padding:12px 11px;text-align:left;vertical-align:bottom;
+    border-bottom:1px solid #16294a}
+  thead th:first-child{left:0;z-index:4;background:#16294a;vertical-align:middle}
+  tbody th{position:sticky;left:0;z-index:2;background:var(--card);font-weight:600;font-size:12.6px;
+    text-align:left;vertical-align:top;padding:11px;white-space:nowrap;
+    border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  tbody td{padding:11px;vertical-align:top;color:var(--ink2);border-bottom:1px solid var(--line);
+    border-right:1px solid #eef1f7}
+  tbody td:last-child{border-right:none}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  tbody tr:nth-child(even) th{background:var(--zebra)}
+  tbody tr:hover td{background:#eef3fc}
+  tbody tr:hover th{background:#eef3fc}
+  tr.hl th,tr.hl td{background:var(--warnbg)!important}
+  tr.pick td{background:#fffbe8!important}
+  td.p{font-weight:700;color:var(--ink);white-space:nowrap}
+  thead th.pickcol{background:var(--brand2)}
+  .badge{display:inline-block;font-size:10px;font-weight:700;background:#ffd966;color:#5a3d00;
+    border-radius:4px;padding:1px 6px;white-space:nowrap;margin-top:3px}
+  .stars{color:#e0a700;letter-spacing:1.5px;font-size:13px;white-space:nowrap}
+  .stars i{color:#d5d9e2;font-style:normal}
+  .ok{color:var(--ok);font-weight:700}
+  .no{color:#9aa4b5;font-weight:600}
+  .warn{color:var(--warn);font-weight:700}
+  .steel{color:var(--ok);font-weight:700}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .cards.c3{grid-template-columns:repeat(3,1fr)}
+  .cards.c4{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:900px){.cards.c3,.cards.c4{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.cards.c3,.cards.c4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    box-shadow:0 1px 3px rgba(20,35,70,.05)}
+  .card .lvl{font-size:11.5px;font-weight:700;color:var(--brand2);letter-spacing:.06em}
+  .card h3{font-size:15px;margin:6px 0 8px;font-weight:700}
+  .card p{margin:0;font-size:12.8px;color:var(--muted);line-height:1.62}
+  .card p b{color:var(--ink)}
+  .card ul{margin:8px 0 0;padding-left:18px;font-size:12.6px;color:var(--muted)}
+  .card ul li{margin-bottom:4px}
+  .card .cost{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);color:var(--warn);font-size:12.4px}
+  .card.top{border-color:#c9d7ef;box-shadow:0 2px 10px rgba(46,84,150,.10)}
+  .card.top .lvl{color:var(--accent)}
+
+  .steps{counter-reset:st;display:grid;gap:10px}
+  .step{display:flex;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .step .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-size:12.5px;
+    font-weight:700;display:flex;align-items:center;justify-content:center}
+  .step div{font-size:13.4px;color:var(--ink2)}
+  .step b{color:var(--ink)}
+
+  .note{font-size:12.6px;color:var(--warn);background:var(--warnbg);border:1px solid #f2dcb8;
+    border-radius:10px;padding:14px 16px;line-height:1.7}
+  .note b{color:#7a3f06}
+  .src{font-size:12.7px;color:var(--muted);padding-left:14px}
+  .src li{margin-bottom:7px}
+  .src a{color:#0b57b8;text-decoration:none;border-bottom:1px solid rgba(11,87,184,.25)}
+  .src a:hover{border-bottom-color:#0b57b8}
+  footer.foot{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;
+    color:#98a2b3;text-align:center;line-height:1.8}
+
+  /* ---------- 材质模块 ---------- */
+  .toolbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--card);
+    border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:0 0 16px}
+  .toolbar label{font-size:12.9px;font-weight:600;color:var(--ink2)}
+  .toolbar .big{font-size:16px;font-weight:800;color:var(--brand2);font-variant-numeric:tabular-nums}
+  input[type=range]{accent-color:var(--brand2);width:210px;height:24px;vertical-align:middle}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+  .fbtn{border:1px solid var(--line);background:#fff;color:var(--ink2);font-size:12.4px;
+    padding:6px 14px;border-radius:999px;cursor:pointer;font-weight:600;transition:.15s}
+  .fbtn:hover{border-color:var(--brand2);color:var(--brand2)}
+  .fbtn.on{background:var(--brand2);color:#fff;border-color:var(--brand2)}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:12px}
+  .mcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;
+    box-shadow:0 1px 3px rgba(20,35,70,.04)}
+  .mcard h4{margin:0 0 8px;font-size:14px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .mcard .row{display:flex;justify-content:space-between;gap:10px;font-size:12.3px;color:var(--muted);
+    padding:3.5px 0;border-bottom:1px dashed #eef1f7}
+  .mcard .row:last-child{border-bottom:none}
+  .mcard .row b{color:var(--ink);font-weight:600;text-align:right}
+  .mcard.hide{display:none}
+  .tag-mat{display:inline-block;font-size:10.5px;font-weight:700;border-radius:4px;padding:2px 7px;white-space:nowrap}
+  .t-steel{background:#e6f4ec;color:#166f45}
+  .t-coat{background:#e8f0fb;color:#1f3864}
+  .t-bear{background:#fdeaea;color:#a3540a}
+  .t-unk{background:#eef1f7;color:#6b7789}
+  .mgrid .empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;
+    padding:26px;background:var(--card);border:1px dashed var(--line);border-radius:10px}
+
+  @media (max-width:720px){
+    .wrap{padding:0 14px 56px}
+    header.top{padding:26px 0 22px;margin-bottom:22px}
+    .verdict{flex-direction:column;gap:8px}
+    table.t1{min-width:1120px}
+    thead th,tbody td,tbody th{padding:9px 10px}
+  }
+  @media print{
+    body{background:#fff}
+    header.top{background:#1f3864!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .tscroll{overflow:visible;box-shadow:none}
+    table{min-width:0!important}
+    thead th{position:static}tbody th{position:static;white-space:normal}
+    section{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Flat Burr Grinder Comparison · 8 Models</p>
+    <h1>
+      平刀磨豆机对比 · 8 台
+      <span class="sub">全钢 / 低残粉 / 性能稳定 —— 格米莱 · 海氏 · Eureka · DF64 · 泰摩 · Mazzer</span>
+    </h1>
+    <p class="meta">
+      <span>数据采集 2026-10-18</span><i>·</i>
+      <span>参数：品牌官网 / 官方经销页</span><i>·</i>
+      <span>价格为公开渠道价，需核实</span>
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="verdict">
+    <span class="tag">结论</span>
+    <p>
+      你的四个条件里，<strong>「全钢机身」是最苛刻的一条</strong>——8 台里只有 <strong>格米莱 9015C</strong> 是真正的全不锈钢机身，
+      其余都是「硬化钢刀盘 + 压铸铝机身」。如果全钢指的是刀盘，8 台全合格；如果指机身，答案只有一台。
+      而<strong>吃粉</strong>这件事，看参数表看不出来，只能看结构——这也是为什么 Mazzer Mini 卖得贵却在这项上垫底（官方明写 <strong>8g 残粉</strong>）。
+    </p>
+  </div>
+
+  <!-- ========== 主表 ========== -->
+  <section>
+    <h2>8 台横向对比</h2>
+    <p class="sub2">黄色底 = 综合推荐档　·　残粉评级依据：单剂量结构 + 气吹/震粉 + 静电中和 + 通道可拆</p>
+    <div class="tscroll">
+      <table class="t1">
+        <thead>
+          <tr>
+            <th>机型</th>
+            <th>刀盘</th>
+            <th>机身</th>
+            <th>功率 / 转速</th>
+            <th>调节</th>
+            <th>豆仓</th>
+            <th>残粉对策</th>
+            <th>残粉评级</th>
+            <th>重量 / 尺寸</th>
+            <th>参考价</th>
+            <th>一句话</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="pick">
+            <th>格米莱<br>Mocube G9015C<span class="badge">全钢</span></th>
+            <td>64mm<br>不锈钢平刀<br><span class="sm">420 不锈钢</span></td>
+            <td><span class="steel">全不锈钢 ✅</span></td>
+            <td>250W<br>3120 rpm</td>
+            <td>0–10 档<br>压扣快调</td>
+            <td>280g<br>+单剂量气吹仓</td>
+            <td>等离子除静电<br>气吹豆仓<br>直落式出粉通道</td>
+            <td><span class="stars">★★★★<i>☆</i></span></td>
+            <td>5.4kg<br>175×226×368</td>
+            <td class="p">约 ¥1,200–1,500</td>
+            <td>唯一全钢机身，64mm 平刀 + 气吹，家用最对题</td>
+          </tr>
+          <tr>
+            <th>格米莱<br>Mocore G9018A</th>
+            <td>64mm<br>不锈钢 <b>DLC</b> 平刀</td>
+            <td>铝合金</td>
+            <td>350W<br>1450 rpm</td>
+            <td>1–11 档（50 级）</td>
+            <td>450g<br>+双豆仓</td>
+            <td>等离子<br>气吹<br>可拆出粉通道</td>
+            <td><span class="stars">★★★★<i>☆</i></span></td>
+            <td>9kg<br>174×260×471</td>
+            <td class="p">约 ¥1,500–2,000</td>
+            <td>DLC 刀盘 + 触控屏，最像商用的国产机</td>
+          </tr>
+          <tr class="pick">
+            <th>海氏<br>G1 二代游刃</th>
+            <td>64mm<br>不锈钢平刀</td>
+            <td>铸铝</td>
+            <td><span class="sm">功率未标注</span><br>2.5 g/s</td>
+            <td><b>100 档</b><br>金属螺纹 0.01mm</td>
+            <td>大仓 + 单份仓</td>
+            <td>等离子<br><b>STO2.0 直落粉</b></td>
+            <td><span class="stars">★★★★<i>☆</i></span></td>
+            <td>未标注<br><span class="sm">较一代 +67%</span></td>
+            <td class="p">¥1,379<span class="sm">（券后）</span></td>
+            <td>同价位档位最细，1379 拿到 64mm 平刀</td>
+          </tr>
+          <tr class="pick">
+            <th>Eureka<br>Mignon Zero</th>
+            <td>55mm<br><b>硬化钢</b>平刀</td>
+            <td>压铸铝</td>
+            <td>320W<br>1350 rpm</td>
+            <td>无级微调<br>（专利 Stepless）</td>
+            <td>45g<br>单剂量</td>
+            <td><b>Zero retention</b><br><b>Blow Up 气爆</b><br>ACE 防静电</td>
+            <td><span class="stars">★★★★★</span></td>
+            <td>5.6kg<br>120×140×345</td>
+            <td class="p">约 ¥3,000–4,000</td>
+            <td>残粉控制最系统，马达 10 年保修</td>
+          </tr>
+          <tr>
+            <th>Eureka<br>Mignon Zero 65<br><span class="sm">Speedy</span></th>
+            <td><b>65mm</b><br>硬化钢平刀</td>
+            <td>压铸铝</td>
+            <td>320W<br><b>1650 rpm</b></td>
+            <td>无级微调</td>
+            <td>45g<br>单剂量</td>
+            <td>Zero retention<br>Blow Up<br>15° 倾斜 + 防跳豆</td>
+            <td><span class="stars">★★★★★</span></td>
+            <td>7.2kg<br>128×260×321</td>
+            <td class="p">约 ¥4,000–5,000</td>
+            <td>刀盘寿命 500kg，出杯效率更高</td>
+          </tr>
+          <tr class="pick">
+            <th>DF64<br>DF64V Gen 3<br><span class="sm">Turin</span></th>
+            <td>64mm<br><b>Red Titanium</b> 平刀</td>
+            <td>铝合金<br>+ 木质底座</td>
+            <td>无刷直流<br><b>变速 ≤1800 rpm</b></td>
+            <td>无级</td>
+            <td>单剂量<br>+ 风箱吹粉</td>
+            <td><b>等离子发生器</b><br><b>可拆磁吸通道</b><br>单剂量 + 风箱</td>
+            <td><span class="stars">★★★★★</span></td>
+            <td>3.9kg<br>100×200×330</td>
+            <td class="p">$499<br><span class="sm">国内约 ¥2,800–3,500</span></td>
+            <td>单剂量标杆，变速 + 通道全可拆</td>
+          </tr>
+          <tr>
+            <th>泰摩<br>Sculptor 064S</th>
+            <td>64mm<br>不锈钢平刀</td>
+            <td>铝合金<br>+ 不锈钢 + PP</td>
+            <td>150W<br>800–1200 rpm</td>
+            <td>36 档无级</td>
+            <td>单剂量</td>
+            <td>单剂量结构<br>低残粉设计</td>
+            <td><span class="stars">★★★★<i>☆</i></span></td>
+            <td>4.1kg<br>100×225×256</td>
+            <td class="p">约 ¥3,000–3,500</td>
+            <td>转速最低，浅烘风味清晰，家用体积友好</td>
+          </tr>
+          <tr class="hl">
+            <th>Mazzer<br>Mini</th>
+            <td>64mm<br>233M <b>轴承钢</b>平刀</td>
+            <td>压铸铝</td>
+            <td>350W<br>1400 rpm（50Hz）</td>
+            <td>无级微调</td>
+            <td>280g 大仓</td>
+            <td>无气吹<br>常规通道</td>
+            <td><span class="stars">★★<i>☆☆☆</i></span><br><span class="sm">官方标称 <b>8g 残粉</b></span></td>
+            <td>8.5kg<br>160×200/320×425</td>
+            <td class="p">约 ¥7,000–9,000</td>
+            <td>做工与耐用性顶级，但残粉是这台的硬伤</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========== 三块判断 ========== -->
+  <section>
+    <h2>三个关键判断</h2>
+    <p class="sub2">参数表看不出来的，都在这里</p>
+    <div class="cards c3">
+      <div class="card">
+        <span class="lvl">01 / 全钢</span>
+        <h3>「全钢」只有一台真的满足</h3>
+        <p>格米莱 9015C 是官方明确写<b>「全不锈钢机身」</b>的唯一一台。Eureka、Mazzer、DF64、泰摩、海氏都是压铸铝或铝合金机身——铝不代表差，散热和重量反而更好，但如果你要的是「钢」，答案就只有它。</p>
+        <p class="cost">若「全钢」指刀盘：8 台全合格，最硬的是 Mazzer 233M 轴承钢与 DF64 的钛涂层。</p>
+      </div>
+      <div class="card">
+        <span class="lvl">02 / 吃粉</span>
+        <h3>贵的机器，残粉可能更差</h3>
+        <p><b>Mazzer Mini 官方说明书直接写 8g 残粉</b>——它靠预定量、耐用性卖钱，不是靠低残粉。家用每天 1–2 杯的话，8g 意味着你每天有半杯的粉永远出不来。</p>
+        <p class="cost">反过来，DF64 与 Eureka Zero 把「单剂量 + 气吹 + 通道可拆」做成了标配，才是家用的正确形态。</p>
+      </div>
+      <div class="card">
+        <span class="lvl">03 / 稳定</span>
+        <h3>稳定 = 刀盘平行度 + 转速恒定</h3>
+        <p>「性能稳定」在磨豆机上是三件事：<b>刀盘平行度</b>（决定粒径一致性）、<b>转速恒定</b>（不因硬豆掉速）、<b>残粉不串味</b>。前两项看电机与出厂校准，第三项看结构。</p>
+        <p class="cost">DF64 玩家普遍反馈「用一周后需要重新做一次刀盘平行度」，这是它的已知特性。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 三档推荐 ========== -->
+  <section>
+    <h2>按预算推荐</h2>
+    <p class="sub2">家用 1–2 杯/天为前提</p>
+    <div class="cards c3">
+      <div class="card">
+        <span class="lvl">¥1,300–2,000</span>
+        <h3>海氏 G1 二代 / 格米莱 9015C</h3>
+        <ul>
+          <li><b>要全钢机身</b> → 格米莱 9015C，约 1,200–1,500</li>
+          <li><b>要档位最细</b> → 海氏 G1 二代，100 档，¥1,379</li>
+        </ul>
+        <p class="cost">这一档两者都是 64mm 平刀，差距在机身材质与档位精度</p>
+      </div>
+      <div class="card top">
+        <span class="lvl">¥2,800–3,500 · 甜点</span>
+        <h3>DF64V Gen 3</h3>
+        <ul>
+          <li>64mm 平刀 + <b>变速</b>（≤1800rpm）+ 等离子 + 磁吸可拆通道</li>
+          <li>3.9kg 最轻，单剂量 + 风箱，换豆不串味</li>
+          <li>刀盘可换 SSP，后期升级空间最大</li>
+        </ul>
+        <p class="cost">需要接受：一周后自己校一次刀盘平行度</p>
+      </div>
+      <div class="card">
+        <span class="lvl">¥3,000–5,000</span>
+        <h3>Eureka Zero / Zero 65</h3>
+        <ul>
+          <li>残粉控制最系统：Zero retention + Blow Up + ACE 三件套</li>
+          <li><b>马达 10 年保修</b>，长期稳定性有背书</li>
+          <li>Zero 65 刀盘寿命 500kg，出杯效率更高</li>
+        </ul>
+        <p class="cost">注意：国内渠道价差异大，认准正规代理</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 自测 ========== -->
+  <section>
+    <h2>到手先做这个测试（30 秒）</h2>
+    <p class="sub2">别信「几乎 0 残粉」，自己称一次就知道</p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><div><b>称 15g 豆</b>，全磨出来接进杯子，再称重——差值就是这台机的起始吃粉量。</div></div>
+      <div class="step"><span class="n">2</span><div><b>连续再磨一次 15g</b>。第一次会有一部分粉「填缝」，<b>第二次的差值才是真实残留</b>。这是最容易误判的地方。</div></div>
+      <div class="step"><span class="n">3</span><div><b>凑近出粉口闻</b>：先磨一口旧豆再磨新豆，有杂味说明通道里有陈粉，换豆会串味。</div></div>
+      <div class="step"><span class="n">4</span><div><b>拆一次</b>：看进豆口是否积粗粉、通道能否取下、刀盘能否快拆。拆得开、看得见、擦得掉，才是真的低残粉。</div></div>
+    </div>
+  </section>
+
+  <!-- ========== 避坑 ========== -->
+  <section>
+    <h2>避坑提醒</h2>
+    <div class="note">
+      <b>⚠ 老款 ≠ 新款的残粉表现。</b>格米莱 9015 老款曾有「18g 豆只出 14.5g 粉、客服回复正常」的公开投诉（3.5g 吃粉）。
+      9015C 是后续加了单剂量气吹仓和直落式出粉通道的新款，结构确实改了，但<b>不要因为「新款」就跳过上面那个称重测试</b>。<br><br>
+      <b>⚠ 「0 残粉」是带引号的营销话术。</b>行业里没有公开的残粉标准，评测里的 0 大多是「肉眼看不到」。
+      真正的判断标准只有三个：<b>通道能不能拆、刀盘能不能快拆、有没有气吹/振粉/防静电</b>。<br><br>
+      <b>⚠ 价格说明。</b>格米莱、海氏为国内电商价（含券后实付）；Eureka、DF64、泰摩、Mazzer 为公开渠道价或海外定价折算，
+      国内行货、代购、水货差异较大，<b>下单前务必核实是否有中文售后与保修</b>。
+    </div>
+  </section>
+
+  <!-- ========== 术语卡 ========== -->
+  <section>
+    <h2>先弄懂两个词：淬硬钢 vs 不锈钢</h2>
+    <p class="sub2">它们不是一个维度的分类，可以同时成立</p>
+
+    <div class="cards c3" style="margin-bottom:16px">
+      <div class="card">
+        <span class="lvl">成分维度</span>
+        <h3>不锈钢</h3>
+        <p>铬含量 ≥10.5%，表面能形成钝化膜，所以<b>不生锈</b>。这是按<b>成分</b>分类。</p>
+      </div>
+      <div class="card">
+        <span class="lvl">工艺维度</span>
+        <h3>淬硬钢</h3>
+        <p>淬火 + 回火，组织转变为马氏体，所以<b>硬度高</b>。这是按<b>状态</b>分类——可以是不锈钢，也可以是高碳钢。</p>
+      </div>
+      <div class="card top">
+        <span class="lvl">关键</span>
+        <h3>440C 淬火后 = 淬硬不锈钢</h3>
+        <p>两者<b>可以同时满足</b>。厂商只写其中一个词时，你其实拿不到完整信息——这也是本站把 3 台机器归入「未标牌号」的原因。</p>
+      </div>
+    </div>
+
+    <div class="tscroll" style="margin-bottom:16px">
+      <table style="min-width:760px">
+        <thead>
+          <tr><th>维度</th><th>淬硬钢（高碳钢 / 工具钢 / 轴承钢）</th><th>不锈钢（马氏体 420 / 440C）</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>分类依据</th><td>热处理工艺</td><td>化学成分（Cr ≥10.5%）</td></tr>
+          <tr><th>典型硬度</th><td><b>HRC 58–64</b></td><td>HRC 50–58</td></tr>
+          <tr><th>耐磨性</th><td class="ok">强</td><td>中</td></tr>
+          <tr><th>防锈性</th><td class="no">差，会锈</td><td class="ok">好</td></tr>
+          <tr><th>韧性</th><td>低（偏脆）</td><td>中</td></tr>
+          <tr><th>成本</th><td>中—高</td><td>低—中</td></tr>
+          <tr><th>磨豆机代表</th><td>Mazzer 233M 轴承钢、D2 工具钢</td><td>格米莱 420、440C</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cards" style="grid-template-columns:repeat(2,1fr);margin-bottom:16px">
+      <div class="card">
+        <span class="lvl">冶金原理</span>
+        <h3>为什么「又硬又不锈」很难</h3>
+        <p><b>硬度靠碳</b>：碳越高，淬火后越硬、越耐磨。<br>
+           <b>防锈靠铬</b>：铬 ≥10.5% 才形成钝化膜。<br>
+           但碳会把铬「锁」进碳化物里，铬被锁住就无法在表面成膜——<b>碳越多，防锈越差</b>。</p>
+        <p class="cost">所以 440C（C≈1.0%、Cr≈17%）是「又硬又不太锈」的极限折中；想再硬，只能加涂层。</p>
+      </div>
+      <div class="card">
+        <span class="lvl">更该警惕</span>
+        <h3>淬硬层：表面淬火 vs 整体淬火</h3>
+        <p><b>表面淬火</b>（高频/渗碳）：外层硬、芯部软，像「M&amp;M 巧克力」。硬化层磨穿后，<b>磨损速度突然加快</b>。</p>
+        <p><b>整体淬火</b>（through-hardened）：从里到外都硬，寿命可预测，但更脆、更贵。</p>
+        <p class="cost">磨豆机大量用表面淬火刀盘，所以会出现「前三年好好的，第四年突然调不准」。</p>
+      </div>
+    </div>
+
+    <div class="note" style="margin-bottom:14px">
+      <b>不会问？记住这三句：</b><br>
+      1.「刀盘是马氏体不锈钢（420/440C）还是高碳钢/轴承钢？」——只说「硬化钢」的，通常没告诉你防不防锈<br>
+      2.「整体淬火还是表面淬火？淬硬层多深？」——答不出「整体淬火」，默认按表面淬火理解<br>
+      3.「标称硬度多少 HRC？」——写不出 HRC 的，基本可以认为没做过硬度控制
+    </div>
+
+    <p class="sub2" style="margin:0">
+      <b>辨色提示：</b>灰色 = 普通淬火钢　·　亮银 = 加强版（高频淬火）　·　金色 = TiN 涂层　·　黑色 = DLC 涂层。
+      <b>磁铁没用</b>——不锈钢和高碳钢都有磁性。
+    </p>
+  </section>
+
+  <!-- ========== 材质与寿命 ========== -->
+  <section>
+    <h2>刀盘材质 → 寿命 → 适合人群</h2>
+    <p class="sub2">行业通用分级（非厂商公布数据）·「家用可用」按你的日杯数实时计算</p>
+
+    <div class="toolbar">
+      <label for="cups2">你每天喝几杯：</label>
+      <input type="range" id="cups2" min="1" max="6" value="2">
+      <span class="big" id="cupsOut">2 杯</span>
+      <span class="sm">≈ <b id="kgOut">13.1</b> kg 豆 / 年（按 18g/杯）</span>
+    </div>
+
+    <div class="tscroll" style="margin-bottom:18px">
+      <table style="min-width:800px">
+        <thead>
+          <tr>
+            <th>等级</th><th>典型钢号</th><th>防锈</th><th>硬度 HRC</th>
+            <th>64mm 寿命</th><th>你家可用</th><th>适合谁</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>标准淬火钢</th><td>420 / 3Cr13</td><td class="ok">好</td><td>50–54</td>
+            <td>295–340 kg</td><td class="yrs" data-kg="318">—</td><td>家用够用，预算优先</td>
+          </tr>
+          <tr>
+            <th>加强版淬火钢</th><td>高频淬火 420 / 440</td><td class="ok">好</td><td>54–57</td>
+            <td>455–500 kg</td><td class="yrs" data-kg="478">—</td><td>每天多杯、想少折腾</td>
+          </tr>
+          <tr>
+            <th>铬钼钢</th><td>Chromoly</td><td>中</td><td>58–60</td>
+            <td>680–725 kg</td><td class="yrs" data-kg="703">—</td><td>进阶玩咖、常换豆</td>
+          </tr>
+          <tr>
+            <th>D2 工具钢</th><td>D2 / Cr12MoV</td><td>近似不锈钢</td><td>60–62</td>
+            <td>1,090–1,135 kg</td><td class="yrs" data-kg="1113">—</td><td>高油豆、小型商用</td>
+          </tr>
+          <tr>
+            <th>涂层刀盘</th><td>D2 + TiN / DLC</td><td class="ok">好</td><td>60–62 + 涂层</td>
+            <td>1,360–1,410 kg</td><td class="yrs" data-kg="1385">—</td><td>要低摩擦、低残粉、防粘</td>
+          </tr>
+          <tr class="hl">
+            <th>轴承钢</th><td>100Cr6 / 52100</td><td class="no">差（会锈）</td><td>60–64</td>
+            <td>商用级，未公布</td><td>—</td><td>商用高频，不介意维护</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-bottom:24px">
+      <b>关键结论：家用根本用不完刀盘寿命。</b>按每天 2 杯（36g）算，一年只磨 13kg；
+      哪怕最低端的 420 标准刀盘，也能撑 <b>20 年以上</b>——瓶颈永远是机器先坏，而不是刀盘磨秃。
+      所以「耐磨」对家用不是第一优先级，<b>防锈、残粉、粒径一致性</b>才决定你每天喝到什么。
+    </div>
+
+    <h2 style="font-size:15px">按材质筛机型</h2>
+    <p class="sub2">厂商没标牌号的，归入「未标注」，不做臆测</p>
+    <div class="filters" id="filters">
+      <button class="fbtn on" data-f="all">全部 8 台</button>
+      <button class="fbtn" data-f="steel">不锈钢</button>
+      <button class="fbtn" data-f="coat">带涂层</button>
+      <button class="fbtn" data-f="bear">轴承钢</button>
+      <button class="fbtn" data-f="unk">未标牌号</button>
+    </div>
+
+    <div class="mgrid" id="mgrid">
+      <div class="mcard" data-mat="steel">
+        <h4>格米莱 9015C <span class="tag-mat t-steel">420 不锈钢</span></h4>
+        <div class="row"><span>刀盘</span><b>64mm / 420 不锈钢</b></div>
+        <div class="row"><span>防锈</span><b>好</b></div>
+        <div class="row"><span>等级</span><b>标准淬火钢</b></div>
+        <div class="row"><span>寿命</span><b>约 300 kg</b></div>
+        <div class="row"><span>你家可用</span><b class="yrs" data-kg="318">—</b></div>
+      </div>
+
+      <div class="mcard" data-mat="coat">
+        <h4>格米莱 9018A <span class="tag-mat t-coat">DLC 涂层</span></h4>
+        <div class="row"><span>刀盘</span><b>64mm / SUS420 + DLC</b></div>
+        <div class="row"><span>防锈</span><b>好</b></div>
+        <div class="row"><span>等级</span><b>涂层刀盘（基材 420）</b></div>
+        <div class="row"><span>寿命</span><b>约 450 kg（推测）</b></div>
+        <div class="row"><span>你家可用</span><b class="yrs" data-kg="450">—</b></div>
+      </div>
+
+      <div class="mcard" data-mat="unk">
+        <h4>海氏 G1 二代 <span class="tag-mat t-unk">未标牌号</span></h4>
+        <div class="row"><span>刀盘</span><b>64mm / 不锈钢</b></div>
+        <div class="row"><span>防锈</span><b>好</b></div>
+        <div class="row"><span>等级</span><b>未公布热处理方式</b></div>
+        <div class="row"><span>寿命</span><b>未公布</b></div>
+        <div class="row"><span>你家可用</span><b>需问客服</b></div>
+      </div>
+
+      <div class="mcard" data-mat="unk">
+        <h4>Eureka Mignon Zero <span class="tag-mat t-unk">硬化钢</span></h4>
+        <div class="row"><span>刀盘</span><b>55mm / 硬化（淬火）钢</b></div>
+        <div class="row"><span>防锈</span><b>未标注</b></div>
+        <div class="row"><span>等级</span><b>淬火钢（牌号未标）</b></div>
+        <div class="row"><span>寿命</span><b>未公布</b></div>
+        <div class="row"><span>你家可用</span><b>需问客服</b></div>
+      </div>
+
+      <div class="mcard" data-mat="unk">
+        <h4>Eureka Zero 65 <span class="tag-mat t-unk">硬化钢</span></h4>
+        <div class="row"><span>刀盘</span><b>65mm / 硬化钢</b></div>
+        <div class="row"><span>防锈</span><b>未标注</b></div>
+        <div class="row"><span>等级</span><b>加强版级（按 500kg 反推）</b></div>
+        <div class="row"><span>寿命</span><b>官方标 500 kg</b></div>
+        <div class="row"><span>你家可用</span><b class="yrs" data-kg="500">—</b></div>
+      </div>
+
+      <div class="mcard" data-mat="coat">
+        <h4>DF64V Gen 3 <span class="tag-mat t-coat">钛涂层</span></h4>
+        <div class="row"><span>刀盘</span><b>64mm / Red Titanium</b></div>
+        <div class="row"><span>防锈</span><b>好</b></div>
+        <div class="row"><span>等级</span><b>涂层刀盘（基材未标）</b></div>
+        <div class="row"><span>寿命</span><b>未公布，可换 SSP</b></div>
+        <div class="row"><span>你家可用</span><b>取决于基材</b></div>
+      </div>
+
+      <div class="mcard" data-mat="steel">
+        <h4>泰摩 Sculptor 064S <span class="tag-mat t-steel">不锈钢</span></h4>
+        <div class="row"><span>刀盘</span><b>64mm / 不锈钢</b></div>
+        <div class="row"><span>防锈</span><b>好</b></div>
+        <div class="row"><span>等级</span><b>未标牌号</b></div>
+        <div class="row"><span>寿命</span><b>未公布</b></div>
+        <div class="row"><span>你家可用</span><b>需问客服</b></div>
+      </div>
+
+      <div class="mcard" data-mat="bear">
+        <h4>Mazzer Mini <span class="tag-mat t-bear">轴承钢</span></h4>
+        <div class="row"><span>刀盘</span><b>64mm / 233M 轴承钢</b></div>
+        <div class="row"><span>防锈</span><b class="no">差，会锈</b></div>
+        <div class="row"><span>等级</span><b>轴承钢（最硬）</b></div>
+        <div class="row"><span>寿命</span><b>商用级（≤1kg/天）</b></div>
+        <div class="row"><span>你家可用</span><b>远超需求</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 来源 ========== -->
+  <section>
+    <h2>数据来源</h2>
+    <ul class="src">
+      <li>格米莱 G9015C 官网 — <a href="http://www.xn--0xvx36b6if.com/productshow-30-4.html" target="_blank" rel="noopener">productshow-30-4</a>（64mm 不锈钢平刀 / 250W / 5.4kg / 全不锈钢机身）</li>
+      <li>格米莱 G9018A 官网 — <a href="http://www.xn--0xvx36b6if.com/productshow-63-4.html" target="_blank" rel="noopener">productshow-63-4</a>（64mm DLC / 350W / 9kg）</li>
+      <li>海氏 G1 二代 — <a href="http://www.365liye.com/product/P_366faa1284874892a0ec4c5530ca168b.html" target="_blank" rel="noopener">产品页</a>（64mm / 100 档 / 铸铝 / STO2.0）</li>
+      <li>Eureka Mignon Zero — <a href="https://eureka.co.it/zh/products/eureka+1920/prosumer+grinders/zero+range/74/" target="_blank" rel="noopener">官网</a>（55mm 硬化钢 / 320W / Blow Up）</li>
+      <li>Eureka Mignon Zero 65 Speedy — <a href="https://www.eureka.co.it/zh/products/eureka+1920/prosumer+grinders/zero+range/127/" target="_blank" rel="noopener">官网</a>（65mm / 1650rpm / 刀盘 500kg）</li>
+      <li>DF64V Gen 3 — <a href="https://dfgrinders.com/products/df64v-coffee-grinder" target="_blank" rel="noopener">官方规格</a>（64mm Red Titanium / 无刷变速 ≤1800rpm / 3.9kg / 等离子）</li>
+      <li>泰摩 Sculptor 064S — <a href="https://49thcoffee.com/products/timemore-sculptor-064s-all-purpose-grinder-120v" target="_blank" rel="noopener">规格页</a>（64mm 不锈钢 / 150W / 800–1200rpm / 4.1kg）</li>
+      <li>Mazzer Mini — <a href="https://shop-us.mazzer.com/products/mini" target="_blank" rel="noopener">官方规格</a>（64mm 233M / 350W / <b>8g 残粉</b> / 8.5kg）</li>
+      <li>磨豆机吃粉实测与吐槽汇总 — <a href="https://post.smzdm.com/p/a82pr2k7/" target="_blank" rel="noopener">什么值得买</a>（9015 老款 18g→14.5g 案例、抗残粉四件套）</li>
+    </ul>
+  </section>
+
+  <footer class="foot">
+    8 台平刀磨豆机 · 参数整理于 2026-10-18 · 残粉评级为主观判断，非实验室数据<br>
+    价格为公开渠道参考价，请以实际下单页为准
+  </footer>
+
+</div>
+<script>
+(function () {
+  var cups = document.getElementById('cups2');
+  var outC = document.getElementById('cupsOut');
+  var outK = document.getElementById('kgOut');
+
+  function update() {
+    var c = +cups.value;
+    var annual = c * 0.018 * 365;            // kg / 年
+    outC.textContent = c + ' 杯';
+    outK.textContent = annual.toFixed(1);
+    document.querySelectorAll('.yrs[data-kg]').forEach(function (el) {
+      var kg = +el.dataset.kg;
+      var y = kg / annual;
+      el.textContent = (y >= 100 ? '100+' : Math.round(y)) + ' 年';
+    });
+  }
+  cups.addEventListener('input', update);
+  update();
+
+  var btns = Array.prototype.slice.call(document.querySelectorAll('#filters .fbtn'));
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      btns.forEach(function (x) { x.classList.remove('on'); });
+      b.classList.add('on');
+      var f = b.dataset.f;
+      document.querySelectorAll('#mgrid .mcard').forEach(function (card) {
+        card.classList.toggle('hide', !(f === 'all' || card.dataset.mat === f));
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
